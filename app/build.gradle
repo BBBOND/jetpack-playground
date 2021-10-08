@@ -33,9 +33,14 @@ android {
     }
     buildFeatures {
         viewBinding true
+        compose true
     }
     lintOptions {
         checkDependencies true
+    }
+    composeOptions {
+        kotlinCompilerVersion "$kotlin_version"
+        kotlinCompilerExtensionVersion "$compose_version"
     }
 }
 
