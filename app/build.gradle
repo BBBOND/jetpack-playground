@@ -145,6 +145,10 @@ dependencies {
     // UI Tests
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 
+    implementation "com.google.accompanist:accompanist-insets:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-insets-ui:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
+
 
 //    implementation "com.google.android.material:material:1.4.0"
 //    implementation "androidx.constraintlayout:constraintlayout:2.1.1"

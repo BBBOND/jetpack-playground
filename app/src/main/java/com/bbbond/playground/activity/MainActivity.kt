@@ -16,4 +16,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity, ComposeActivity::class.java))
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
 }
