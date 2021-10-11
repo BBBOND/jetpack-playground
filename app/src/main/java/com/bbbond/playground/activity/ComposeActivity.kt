@@ -14,7 +14,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -47,7 +46,7 @@ fun Page() {
     ) {
         ProvideWindowInsets {
             rememberSystemUiController().setStatusBarColor(
-                Color.Transparent,
+                MaterialTheme.colors.primaryVariant,
                 darkIcons = isSystemInDarkTheme()
             )
             Scaffold(
@@ -73,7 +72,8 @@ fun Header() {
             applyStart = true,
             applyTop = true,
             applyEnd = true,
-        )
+        ),
+        backgroundColor = MaterialTheme.colors.primary
     ) {
         val currentActivity = (LocalContext.current as? Activity)
         IconButton(onClick = {
