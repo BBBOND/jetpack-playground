@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
 import com.bbbond.playground.DarkColors
 import com.bbbond.playground.LightColors
+import com.bbbond.playground.windowpreferences.WindowPreferencesManager
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.navigationBarsHeight
@@ -33,6 +34,8 @@ class ComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowPreferencesManager = WindowPreferencesManager(this)
+        windowPreferencesManager.applyEdgeToEdgePreference(window)
         setContent {
             Page()
         }
