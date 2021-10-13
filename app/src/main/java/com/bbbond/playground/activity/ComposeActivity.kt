@@ -33,9 +33,9 @@ class ComposeActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         val windowPreferencesManager = WindowPreferencesManager(this)
         windowPreferencesManager.applyEdgeToEdgePreference(window)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             Page()
         }

@@ -14,10 +14,12 @@ private val Blue700 = Color(0XFF1976D2)
 
 val DarkColors = darkColors(
     primary = Blue200,
-    primaryVariant = Blue700
+    primaryVariant = Blue700,
+    background = Yellow400,
 )
 
 val LightColors = lightColors(
     primary = Yellow400,
-    primaryVariant = Yellow500
+    primaryVariant = Yellow500,
+    background = Yellow200,
 )

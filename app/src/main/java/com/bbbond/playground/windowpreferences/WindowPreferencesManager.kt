@@ -38,27 +38,19 @@ class WindowPreferencesManager(private val context: Context) {
         }
         val statusBarColor = getStatusBarColor(true)
         val navbarColor = getNavBarColor(true)
-        val lightBackground = MaterialColors.isColorLight(
-            MaterialColors.getColor(
-                context, R.attr.colorBackground, Color.BLACK
-            )
-        )
+        val lightBackground = MaterialColors.isColorLight(MaterialColors.getColor(context, R.attr.colorBackground, Color.BLACK))
         val lightStatusBar = MaterialColors.isColorLight(statusBarColor)
-        val showDarkStatusBarIcons =
-            lightStatusBar || statusBarColor == Color.TRANSPARENT && lightBackground
+        val showDarkStatusBarIcons = lightStatusBar || statusBarColor == Color.TRANSPARENT && lightBackground
         val lightNavbar = MaterialColors.isColorLight(navbarColor)
         val showDarkNavbarIcons = lightNavbar || navbarColor == Color.TRANSPARENT && lightBackground
         val decorView = window.decorView
-        val currentStatusBar =
-            if (showDarkStatusBarIcons && VERSION.SDK_INT >= VERSION_CODES.M) View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR else 0
-        val currentNavBar =
-            if (showDarkNavbarIcons && VERSION.SDK_INT >= VERSION_CODES.O) View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR else 0
+        val currentStatusBar = if (showDarkStatusBarIcons && VERSION.SDK_INT >= VERSION_CODES.M) View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR else 0
+        val currentNavBar = if (showDarkNavbarIcons && VERSION.SDK_INT >= VERSION_CODES.O) View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR else 0
         window.navigationBarColor = navbarColor
         window.statusBarColor = statusBarColor
-        val systemUiVisibility =
-            ((if (edgeToEdgeEnabled) EDGE_TO_EDGE_FLAGS else View.SYSTEM_UI_FLAG_VISIBLE)
-                    or currentStatusBar
-                    or currentNavBar)
+        val systemUiVisibility = ((if (edgeToEdgeEnabled) EDGE_TO_EDGE_FLAGS else View.SYSTEM_UI_FLAG_VISIBLE)
+                or currentStatusBar
+                or currentNavBar)
         decorView.systemUiVisibility = systemUiVisibility
     }
 
@@ -81,8 +73,7 @@ class WindowPreferencesManager(private val context: Context) {
     @TargetApi(VERSION_CODES.LOLLIPOP)
     private fun getNavBarColor(isEdgeToEdgeEnabled: Boolean): Int {
         if (isEdgeToEdgeEnabled && VERSION.SDK_INT < VERSION_CODES.O_MR1) {
-            val opaqueNavBarColor =
-                MaterialColors.getColor(context, R.attr.navigationBarColor, Color.BLACK)
+            val opaqueNavBarColor = MaterialColors.getColor(context, R.attr.navigationBarColor, Color.BLACK)
             return ColorUtils.setAlphaComponent(opaqueNavBarColor, EDGE_TO_EDGE_BAR_ALPHA)
         }
         return if (isEdgeToEdgeEnabled) {
@@ -96,7 +87,6 @@ class WindowPreferencesManager(private val context: Context) {
 
     companion object {
         private const val EDGE_TO_EDGE_BAR_ALPHA = 128
-
         @RequiresApi(VERSION_CODES.LOLLIPOP)
         private val EDGE_TO_EDGE_FLAGS = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
     }
