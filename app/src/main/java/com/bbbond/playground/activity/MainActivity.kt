@@ -3,6 +3,7 @@ package com.bbbond.playground.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.bbbond.playground.databinding.ActivityMainBinding
 import com.bbbond.playground.windowpreferences.WindowPreferencesManager
 
@@ -12,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         val windowPreferencesManager = WindowPreferencesManager(this)
         windowPreferencesManager.applyEdgeToEdgePreference(window)
 
